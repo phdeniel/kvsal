@@ -36,7 +36,7 @@
 #include <pthread.h>
 #include <time.h>
 #include "../../motr/m0common.h"
-#include <kvsns/kvsal.h>
+#include <iosea/kvsal.h>
 
 
 /* The REDIS context exists in the TLS, for MT-Safety */

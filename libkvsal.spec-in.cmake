@@ -87,9 +87,9 @@ make %{?_smp_mflags} || make %{?_smp_mflags} || make
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_libdir}/pkgconfig
-mkdir -p %{buildroot}%{_includedir}/kvsns
+mkdir -p %{buildroot}%{_includedir}/iosea
 mkdir -p %{buildroot}%{_sysconfdir}/kvsns.d
-install -m 644 include/kvsns/kvsal.h  %{buildroot}%{_includedir}/kvsns
+install -m 644 include/iosea/kvsal.h  %{buildroot}%{_includedir}/iosea
 %if %{with redis}
 install -m 644 kvsal/redis/libkvsal_redis.so %{buildroot}%{_libdir}
 %endif
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(-,root,root)
 %{_libdir}/pkgconfig/libkvsal.pc
-%{_includedir}/kvsns/kvsal.h
+%{_includedir}/iosea/kvsal.h
 
 %if %{with redis}
 %files redis

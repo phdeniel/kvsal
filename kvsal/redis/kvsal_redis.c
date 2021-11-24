@@ -37,7 +37,7 @@
 #include <pthread.h>
 #include <time.h>
 #include <ini_config.h>
-#include <kvsns/kvsal.h>
+#include <iosea/kvsal.h>
 
 #define RC_WRAP(__function, ...) ({\
         int __rc = __function(__VA_ARGS__);\
