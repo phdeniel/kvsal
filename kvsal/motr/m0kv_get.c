@@ -12,7 +12,7 @@
 #include <iosea/m0common.h>
 
 static struct collection_item *cfg_items;
-#define CONF "/etc/kvsns.d/kvsns.ini"
+#define CONF "/etc/iosea.d/kvsns.ini"
 
 int main(int argc, char *argv[])
 {

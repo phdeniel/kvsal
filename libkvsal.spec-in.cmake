@@ -88,7 +88,7 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_libdir}/pkgconfig
 mkdir -p %{buildroot}%{_includedir}/iosea
-mkdir -p %{buildroot}%{_sysconfdir}/kvsns.d
+mkdir -p %{buildroot}%{_sysconfdir}/iosea.d
 install -m 644 include/iosea/kvsal.h  %{buildroot}%{_includedir}/iosea
 %if %{with redis}
 install -m 644 kvsal/redis/libkvsal_redis.so %{buildroot}%{_libdir}
@@ -99,14 +99,14 @@ install -m 644 kvsal/motr/libkvsal_motr.so %{buildroot}%{_libdir}
 %endif
 
 install -m 644 libkvsal.pc  %{buildroot}%{_libdir}/pkgconfig
-install -m 644 kvsns.ini %{buildroot}%{_sysconfdir}/kvsns.d
+install -m 644 kvsns.ini %{buildroot}%{_sysconfdir}/iosea.d
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%config(noreplace) %{_sysconfdir}/kvsns.d/kvsns.ini
+%config(noreplace) %{_sysconfdir}/iosea.d/kvsns.ini
 
 %files devel
 %defattr(-,root,root)
