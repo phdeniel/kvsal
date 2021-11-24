@@ -80,12 +80,20 @@ if (NOT HAVE_KVS)
 	message(FATAL_ERROR "Can't find a KVS")
 endif (NOT HAVE_KVS)
 
+if((HAVE_MOTR) AND (HAVE_MOTR_H))
+      message(STATUS "Motr was found, looking for m0common")
+        find_library(HAVE_M0COMMON m0common)
+        check_library_exists(
+                m0common
+                m0init
+                ""
+                HAVE_M0COMMON
+                )
+endif((HAVE_MOTR) AND (HAVE_MOTR_H))
+
+
 # Build ancillary libs
 add_subdirectory(kvsal)
-if (HAVE_MOTR AND HAVE_MOTR_H)
-	add_subdirectory(motr)
-endif (HAVE_MOTR AND HAVE_MOTR_H)
-
 
 # CPack / rpmbuild specific stuff
 set(CPACK_PACKAGE_FILE_NAME "libkvsal-Source" )

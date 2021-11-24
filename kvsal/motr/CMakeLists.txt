@@ -22,10 +22,10 @@ target_link_libraries(kvsal_motr
 )
 
 add_executable(m0kv_get m0kv_get.c)
-target_link_libraries(m0kv_get kvsal_motr)
+target_link_libraries(m0kv_get kvsal_motr ini_config)
 
 add_executable(m0kv_set m0kv_set.c)
-target_link_libraries(m0kv_set kvsal_motr)
+target_link_libraries(m0kv_set kvsal_motr ini_config)
 
 add_executable(m0kv_del m0kv_del.c)
-target_link_libraries(m0kv_del kvsal_motr)
+target_link_libraries(m0kv_del kvsal_motr ini_config)

@@ -96,7 +96,6 @@ install -m 644 kvsal/redis/libkvsal_redis.so %{buildroot}%{_libdir}
 
 %if %{with motr}
 install -m 644 kvsal/motr/libkvsal_motr.so %{buildroot}%{_libdir}
-install -m 644 motr/libm0common.so %{buildroot}%{_libdir}
 %endif
 
 install -m 644 libkvsal.pc  %{buildroot}%{_libdir}/pkgconfig
@@ -122,7 +121,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with motr}
 %files motr
 %{_libdir}/libkvsal_motr.so*
-%{_libdir}/libm0common.so*
 %endif
 
 %changelog

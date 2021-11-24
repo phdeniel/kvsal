@@ -9,6 +9,7 @@ cc = meson.get_compiler('c')
 
 hiredis_lib = cc.find_library('libhiredis', required: true)
 motr_lib = cc.find_library('libmotr', required: false)
+m0common_lib = cc.find_library('libm0common', required: false)
 dl_lib = cc.find_library('dl', required: true)
 pthread_lib = cc.find_library('pthread', required: true)
 ini_config_lib = cc.find_library('libini_config', required: true)
@@ -39,10 +40,6 @@ if motr_lib.found()
     '-fno-common',
     '-fPIC'])
   add_project_arguments(motr_options, language: 'c')
-endif
-
-if motr_lib.found()
-   subdir('motr')
 endif
 
 subdir('kvsal')
