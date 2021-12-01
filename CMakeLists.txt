@@ -15,6 +15,14 @@ set(LIBKVSAL_BASE_VERSION ${LIBKVSAL_MAJOR_VERSION}.${LIBKVSAL_MINOR_VERSION}.${
 message( STATUS "cmake version ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" )
 message( STATUS "libkvsal version ${LIBKVSAL_BASE_VERSION}")
 
+option(EXT_BUILD "Get include deps in upper levels" "")
+
+if(EXT_BUILD)
+  message(STATUS "EXT_BUILD=${EXT_BUILD}")
+  link_directories(${EXT_BUILD}/usr/local/lib)
+  include_directories(AFTER ${EXT_BUILD}/usr/local/include)
+endif(EXT_BUILD)
+
 # Final tuning
 
 include(CheckIncludeFiles)
@@ -149,4 +157,4 @@ add_custom_command(TARGET srpm
 
 # INSTALL
 install(FILES ${PROJECT_SOURCE_DIR}/libkvsal.pc DESTINATION lib)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/kvsal DESTINATION include)
+install(FILES ${PROJECT_SOURCE_DIR}/include/iosea/kvsal.h DESTINATION include/iosea)
