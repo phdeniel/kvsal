@@ -21,11 +21,6 @@ Provides: %{name} = %{version}-%{release}
 
 %define on_off_switch() %%{?with_%1:ON}%%{!?with_%1:OFF}
 
-# A few explanation about %bcond_with and %bcond_without
-# /!\ be careful: this syntax can be quite messy
-# %bcond_with means you add a "--with" option, default = without this feature
-# %bcond_without adds a"--without" so the feature is enabled by default
-
 @BCOND_MOTR@ motr
 %global use_motr %{on_off_switch motr}
 
@@ -33,8 +28,8 @@ Provides: %{name} = %{version}-%{release}
 %global use_redis %{on_off_switch redis}
 
 %description
-The libkvsal is a library that allows of a POSIX namespace built on top of
-a Key-Value Store.
+The KVSAL is an abstraction layer used by the IO-SEA namespace for
+accessing a KVS. It currently can be used on top of REDIS and MOTR.
 
 %package devel
 Summary: Development file for the library libkvsal
@@ -70,9 +65,8 @@ This package contains libraries for using CORTX-MOTR as a backend for libkvsal
 
 
 %description devel
-The libkvsal is a library that allows of a POSIX namespace built on top of
-a Key-Value Store.
-This package contains tools for libkvsal.
+The KVSAL is an abstraction layer used by the IO-SEA namespace for
+accessing a KVS. It currently can be used on top of REDIS and MOTR.
 
 %prep
 %setup -q -n %{sourcename}
