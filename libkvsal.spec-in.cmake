@@ -68,6 +68,8 @@ This package contains libraries for using CORTX-MOTR as a backend for libkvsal
 The KVSAL is an abstraction layer used by the IO-SEA namespace for
 accessing a KVS. It currently can be used on top of REDIS and MOTR.
 
+%global debug_package %{nil} 
+
 %prep
 %setup -q -n %{sourcename}
 
