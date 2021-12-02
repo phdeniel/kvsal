@@ -53,8 +53,8 @@
 
 #define KVSNS_STORE "KVSNS_STORE"
 #define KVSNS_SERVER "KVSNS_SERVER"
-#define KLEN 256
-#define VLEN 256
+#define KLEN 300
+#define VLEN 300
 
 typedef struct kvsal_item {
 	int offset;
