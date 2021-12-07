@@ -74,7 +74,7 @@ accessing a KVS. It currently can be used on top of REDIS and MOTR.
 %setup -q -n %{sourcename}
 
 %build
-cmake -DEXT_BUILD=@EXT_BUILD@ . 
+cmake . 
 
 make %{?_smp_mflags} || make %{?_smp_mflags} || make
 
