@@ -21,6 +21,9 @@ target_link_libraries(kvsal_motr
   m0common
 )
 
+install(TARGETS kvsal_motr DESTINATION lib)
+
+
 add_executable(m0kv_get m0kv_get.c)
 target_link_libraries(m0kv_get kvsal_motr ini_config)
 
