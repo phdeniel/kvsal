@@ -26,7 +26,7 @@
  */
 
 /* kvsal_motr.c
- * KVS Abstraction Layer: interface for MOTR 
+ * KVS Abstraction Layer: interface for MOTR
  */
 
 #include <errno.h>
@@ -148,7 +148,7 @@ int kvsal_incr_counter(char *k, unsigned long long *v)
 		return rc;
 
 	sscanf(buf, "%llu", v);
-	*v += 1; 
+	*v += 1;
 	snprintf(buf, VLEN, "%llu", *v);
 	vlen = strnlen(buf, VLEN)+1;
 
@@ -218,7 +218,7 @@ bool populate_list(char *k, void *arg)
 	if (!list)
 		return false;
 
-	list->size +=1;
+	list->size += 1;
 	content = list->content;
 
 	list->content = realloc(content, list->size*sizeof(kvsal_item_t));
@@ -228,7 +228,7 @@ bool populate_list(char *k, void *arg)
 	item = &list->content[list->size - 1];
 
 	strncpy(item->str, k, KLEN);
-	item->offset = list->size -1;
+	item->offset = list->size - 1;
 
 	return true;
 }
@@ -238,9 +238,8 @@ int kvsal_fetch_list(char *pattern, kvsal_list_t *list)
 	char initk[KLEN];
 	int rc = 0;
 
-        if (!pattern || !list)
-                return -EINVAL;
-
+	if (!pattern || !list)
+		return -EINVAL;
 
 	strncpy(initk, pattern, KLEN);
 	initk[strnlen(pattern, KLEN)-1] = '\0';
@@ -256,15 +255,15 @@ int kvsal_fetch_list(char *pattern, kvsal_list_t *list)
 
 int kvsal_dispose_list(kvsal_list_t *list)
 {
-        if (!list)
-                return -EINVAL;
+	if (!list)
+		return -EINVAL;
 
-        return 0;
+	return 0;
 }
 
 /** @todo: too many strncpy and mallocs, this should be optimized */
 int kvsal_get_list(kvsal_list_t *list, int start, int *size,
-                    kvsal_item_t *items)
+		    kvsal_item_t *items)
 {
 	int i;
 
@@ -294,7 +293,7 @@ int kvsal_get_list_pattern(char *pattern, int start, int *size,
 	initk[strnlen(pattern, KLEN)-1] = '\0';
 
 	rc = kvsal_fetch_list(pattern, &list);
-	if (rc < 0 )
+	if (rc < 0)
 		return rc;
 
 	rc = kvsal_get_list(&list, start, size, items);
@@ -304,7 +303,7 @@ int kvsal_get_list_pattern(char *pattern, int start, int *size,
 	}
 
 	rc = kvsal_dispose_list(&list);
-	if (rc < 0 )
+	if (rc < 0)
 		return rc;
 
 	return 0;

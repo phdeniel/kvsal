@@ -40,9 +40,9 @@
 #include "../../include/iosea/kvsal.h"
 
 #define RC_WRAP(__function, ...) ({\
-        int __rc = __function(__VA_ARGS__);\
-        if (__rc != 0)        \
-                return __rc; })
+	int __rc = __function(__VA_ARGS__);\
+	if (__rc != 0)	\
+		return __rc; })
 
 /* The REDIS context exists in the TLS, for MT-Safety */
 __thread redisContext *rediscontext = NULL;
@@ -475,7 +475,7 @@ int kvsal_fetch_list(char *pattern, kvsal_list_t *list)
 		return -EINVAL;
 
 	/* REDIS manages KVS in RAM. Nothing to do */
-	strncpy(list->pattern , pattern, KLEN);
+	strncpy(list->pattern, pattern, KLEN);
 
 	return 0;
 }
@@ -494,9 +494,9 @@ int kvsal_get_list(kvsal_list_t *list, int start, int *end,
 {
 	if (!list)
 		return -EINVAL;
-	
-	return kvsal_get_list_pattern(list->pattern, 
-				      start, 
+
+	return kvsal_get_list_pattern(list->pattern,
+				      start,
 				      end,
 				      items);
 }
